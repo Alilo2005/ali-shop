@@ -69,7 +69,7 @@ export function CartSidebar() {
 
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-4 sm:pl-10">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -79,7 +79,7 @@ export function CartSidebar() {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
+                <Dialog.Panel className="pointer-events-auto w-screen max-w-sm sm:max-w-md">
                   <motion.div 
                     className="flex h-full flex-col bg-white shadow-2xl"
                     initial={{ x: 300 }}
@@ -87,7 +87,7 @@ export function CartSidebar() {
                     exit={{ x: 300 }}
                   >
                     {/* Enhanced Header */}
-                    <div className="relative bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 px-4 py-6 sm:px-6">
+                    <div className="relative bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 px-4 py-4 sm:px-6 sm:py-6">
                       <div className="flex items-center justify-between">
                         <motion.div 
                           className="flex items-center space-x-3"
@@ -159,7 +159,7 @@ export function CartSidebar() {
                     </div>
 
                     {/* Cart Content */}
-                    <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                    <div className="flex-1 overflow-y-auto px-3 py-4 sm:px-6 sm:py-6">
                       <AnimatePresence mode="popLayout">
                         {cart.length === 0 ? (
                           <motion.div 
@@ -198,11 +198,11 @@ export function CartSidebar() {
                                 transition={{ duration: 0.3, delay: index * 0.1 }}
                                 className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
                               >
-                                <div className="p-4">
-                                  <div className="flex items-start space-x-4">
+                                <div className="p-3 sm:p-4">
+                                  <div className="flex items-start space-x-3 sm:space-x-4">
                                     {/* Product Image */}
                                     <div className="relative">
-                                      <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-gray-100">
+                                      <div className="h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0 overflow-hidden rounded-xl bg-gray-100">
                                         <Image
                                           src={item.image}
                                           alt={item.name}
@@ -211,7 +211,7 @@ export function CartSidebar() {
                                           className="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-300"
                                         />
                                       </div>
-                                      <div className="absolute -top-1 -right-1 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center shadow-lg">
+                                      <div className="absolute -top-1 -right-1 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-bold rounded-full h-5 w-5 sm:h-6 sm:w-6 flex items-center justify-center shadow-lg text-[10px] sm:text-xs">
                                         {item.quantity}
                                       </div>
                                     </div>
@@ -250,10 +250,10 @@ export function CartSidebar() {
                                   </div>
 
                                   {/* Quantity and Actions */}
-                                  <div className="mt-4 flex items-center justify-between">
-                                    <div className="flex items-center space-x-3">
-                                      <span className="text-sm font-medium text-gray-700">Qty:</span>
-                                      <div className="flex items-center space-x-2 bg-gray-50 rounded-lg p-1">
+                                  <div className="mt-3 sm:mt-4 flex items-center justify-between">
+                                    <div className="flex items-center space-x-2 sm:space-x-3">
+                                      <span className="text-xs sm:text-sm font-medium text-gray-700">Qty:</span>
+                                      <div className="flex items-center space-x-1 sm:space-x-2 bg-gray-50 rounded-lg p-1">
                                         <motion.button
                                           type="button"
                                           onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
@@ -261,10 +261,10 @@ export function CartSidebar() {
                                           whileHover={{ scale: 1.1 }}
                                           whileTap={{ scale: 0.9 }}
                                         >
-                                          <MinusIcon className="h-4 w-4" />
+                                          <MinusIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                                         </motion.button>
                                         
-                                        <span className="w-8 text-center font-medium text-gray-900">
+                                        <span className="w-6 sm:w-8 text-center font-medium text-gray-900 text-sm">
                                           {item.quantity}
                                         </span>
                                         
@@ -275,7 +275,7 @@ export function CartSidebar() {
                                           whileHover={{ scale: 1.1 }}
                                           whileTap={{ scale: 0.9 }}
                                         >
-                                          <PlusIcon className="h-4 w-4" />
+                                          <PlusIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                                         </motion.button>
                                       </div>
                                     </div>
@@ -315,7 +315,7 @@ export function CartSidebar() {
                     {/* Enhanced Footer / Checkout Section */}
                     {cart.length > 0 && (
                       <motion.div 
-                        className="border-t border-gray-200 bg-gradient-to-br from-gray-50 to-white px-4 py-6 sm:px-6"
+                        className="border-t border-gray-200 bg-gradient-to-br from-gray-50 to-white px-3 py-4 sm:px-6 sm:py-6"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
@@ -380,34 +380,6 @@ export function CartSidebar() {
                               </div>
                             </Link>
                           </motion.div>
-
-                          {/* Express Checkout Options */}
-                          <div className="mt-4 space-y-2">
-                            <div className="text-xs text-center text-gray-500 mb-3">Or pay with</div>
-                            <div className="grid grid-cols-3 gap-2">
-                              <motion.button
-                                className="flex items-center justify-center py-2 bg-black text-white rounded-lg text-xs font-medium hover:bg-gray-800 transition-colors"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                 Pay
-                              </motion.button>
-                              <motion.button
-                                className="flex items-center justify-center py-2 bg-blue-600 text-white rounded-lg text-xs font-medium hover:bg-blue-700 transition-colors"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                PayPal
-                              </motion.button>
-                              <motion.button
-                                className="flex items-center justify-center py-2 bg-green-600 text-white rounded-lg text-xs font-medium hover:bg-green-700 transition-colors"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                GPay
-                              </motion.button>
-                            </div>
-                          </div>
 
                           {/* Continue Shopping */}
                           <div className="mt-6 flex justify-center text-center">
