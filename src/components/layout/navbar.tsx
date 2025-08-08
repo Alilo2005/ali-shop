@@ -233,7 +233,7 @@ export function Navbar() {
                 >
                   <Link
                     href="/auth"
-                    className="inline-flex items-center justify-center px-3 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-pink-500 via-purple-600 to-violet-600 hover:from-pink-600 hover:via-purple-700 hover:to-violet-700 rounded-lg sm:rounded-xl transition-all duration-200 shadow-lg shadow-pink-500/30 min-w-[60px] sm:min-w-[80px] ring-2 ring-white/20 hover:ring-white/30"
+                    className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-2.5 text-sm font-medium text-white bg-gradient-to-r from-pink-500 via-purple-600 to-violet-600 hover:from-pink-600 hover:via-purple-700 hover:to-violet-700 rounded-lg sm:rounded-xl transition-all duration-200 shadow-lg shadow-pink-500/30 min-w-[75px] sm:min-w-[85px] whitespace-nowrap ring-2 ring-white/20 hover:ring-white/30"
                   >
                     Sign In
                   </Link>
