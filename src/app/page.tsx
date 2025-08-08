@@ -78,11 +78,7 @@ export default function Home() {
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent gradient-shift"> Ali Shop</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Experience shopping like never before with our{' '}
-              <Typewriter 
-                words={['premium features', 'exceptional service', 'amazing deals', 'fast delivery']}
-                className="text-purple-600 font-semibold"
-              />
+              Experience shopping like never before with our premium features and exceptional service.
             </p>
           </motion.div>
           
