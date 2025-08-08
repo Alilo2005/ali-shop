@@ -6,7 +6,6 @@ import { Navbar } from '@/components/layout/navbar'
 import { Footer } from '@/components/layout/footer'
 import { ChatbotSimple } from '@/components/chatbot/chatbot-simple'
 import { ToastProvider } from '@/components/toast-provider'
-import { FloatingActionButtons } from '@/components/ui/floating-action-buttons'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 
@@ -83,7 +82,6 @@ export default function RootLayout({
           </div>
           <ChatbotSimple />
           <ToastProvider />
-          <FloatingActionButtons />
         </Providers>
       </body>
     </html>
