@@ -40,8 +40,8 @@ export function Navbar() {
       <motion.header 
         className={`sticky top-0 z-50 transition-all duration-300 ${
           scrolled 
-            ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-100' 
-            : 'bg-white shadow-sm'
+            ? 'bg-gradient-to-r from-purple-900/95 via-blue-900/95 to-indigo-900/95 backdrop-blur-xl shadow-2xl shadow-purple-500/20 border-b border-purple-500/20' 
+            : 'bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 shadow-lg shadow-purple-500/10'
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -57,15 +57,15 @@ export function Navbar() {
             >
               <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
                 <motion.div 
-                  className="h-8 w-8 sm:h-10 sm:w-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/25"
-                  whileHover={{ rotate: 3, scale: 1.05 }}
+                  className="h-8 w-8 sm:h-10 sm:w-10 bg-gradient-to-br from-pink-500 via-purple-500 to-violet-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg shadow-pink-500/30 ring-2 ring-white/20"
+                  whileHover={{ rotate: 3, scale: 1.05, boxShadow: "0 20px 40px rgba(236, 72, 153, 0.4)" }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  <ShoppingBagIcon className="h-4 w-4 sm:h-6 sm:w-6 text-white" />
+                  <ShoppingBagIcon className="h-4 w-4 sm:h-6 sm:w-6 text-white drop-shadow-sm" />
                 </motion.div>
                 <div>
                   <motion.span 
-                    className="text-lg sm:text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent"
+                    className="text-lg sm:text-xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent drop-shadow-sm"
                     whileHover={{ scale: 1.02 }}
                   >
                     Ali Shop
@@ -85,11 +85,11 @@ export function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200 relative group"
+                    className="px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 relative group backdrop-blur-sm border border-white/5 hover:border-white/20"
                   >
                     <span className="relative z-10">{item.name}</span>
                     <motion.div
-                      className="absolute inset-0 bg-blue-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                       layoutId="navbar-hover"
                     />
                   </Link>
@@ -112,7 +112,7 @@ export function Navbar() {
               {/* Dark Mode Toggle */}
               <motion.button
                 onClick={toggleTheme}
-                className="p-2 sm:p-2.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg sm:rounded-xl transition-all duration-200 border border-gray-200 hover:border-gray-300"
+                className="p-2 sm:p-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl transition-all duration-200 border border-white/10 hover:border-white/20 backdrop-blur-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 title={theme === 'dark' ? "Switch to light mode" : "Switch to dark mode"}
@@ -145,7 +145,7 @@ export function Navbar() {
               {/* Search - Mobile */}
               <motion.button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="lg:hidden p-2 sm:p-2.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg sm:rounded-xl transition-all duration-200 border border-gray-200 hover:border-gray-300"
+                className="lg:hidden p-2 sm:p-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl transition-all duration-200 border border-white/10 hover:border-white/20 backdrop-blur-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -156,17 +156,17 @@ export function Navbar() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link 
                   href="/wishlist" 
-                  className="inline-flex items-center justify-center p-2 sm:p-2.5 text-gray-600 hover:text-red-500 hover:bg-red-50 rounded-lg sm:rounded-xl transition-all duration-200 border border-gray-200 hover:border-red-200"
+                  className="inline-flex items-center justify-center p-2 sm:p-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl transition-all duration-200 border border-white/10 hover:border-pink-300/50 backdrop-blur-sm group"
                   title="Wishlist"
                 >
-                  <HeartIcon className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <HeartIcon className="h-4 w-4 sm:h-5 sm:w-5 group-hover:text-pink-300 transition-colors" />
                 </Link>
               </motion.div>
 
               {/* Cart */}
               <motion.button
                 onClick={toggleCart}
-                className="relative p-2 sm:p-2.5 text-gray-600 hover:text-gray-900 hover:bg-blue-50 rounded-lg sm:rounded-xl transition-all duration-200 border border-gray-200 hover:border-blue-300"
+                className="relative p-2 sm:p-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl transition-all duration-200 border border-white/10 hover:border-white/20 backdrop-blur-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -177,7 +177,7 @@ export function Navbar() {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       exit={{ scale: 0 }}
-                      className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 bg-blue-600 text-white text-xs font-bold rounded-full h-5 w-5 sm:h-6 sm:w-6 flex items-center justify-center shadow-lg"
+                      className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-bold rounded-full h-5 w-5 sm:h-6 sm:w-6 flex items-center justify-center shadow-lg shadow-pink-500/50 ring-2 ring-white/20"
                     >
                       {totalItems}
                     </motion.span>
@@ -189,36 +189,36 @@ export function Navbar() {
               {session ? (
                 <div className="relative group">
                   <motion.button 
-                    className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-2.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg sm:rounded-xl transition-all duration-200 border border-gray-200 hover:border-gray-300"
+                    className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl transition-all duration-200 border border-white/10 hover:border-white/20 backdrop-blur-sm"
                     whileHover={{ scale: 1.02 }}
                   >
-                    <div className="h-6 w-6 sm:h-8 sm:w-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-md">
+                    <div className="h-6 w-6 sm:h-8 sm:w-8 bg-gradient-to-br from-pink-500 via-purple-500 to-violet-600 rounded-full flex items-center justify-center shadow-lg shadow-pink-500/30 ring-2 ring-white/20">
                       <UserIcon className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
                     </div>
-                    <span className="hidden sm:block text-sm font-medium max-w-20 sm:max-w-24 truncate">{session.user?.name}</span>
+                    <span className="hidden sm:block text-sm font-medium max-w-20 sm:max-w-24 truncate text-white/90">{session.user?.name}</span>
                   </motion.button>
                   <motion.div 
-                    className="absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+                    className="absolute right-0 mt-3 w-48 bg-gradient-to-br from-purple-900/95 via-blue-900/95 to-indigo-900/95 backdrop-blur-xl rounded-xl shadow-xl shadow-purple-500/20 border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
                     initial={{ y: -5, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                   >
                     <div className="p-2">
-                      <Link href="/dashboard" className="flex items-center px-3 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
+                      <Link href="/dashboard" className="flex items-center px-3 py-2.5 text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-lg transition-colors">
                         <span className="mr-3">📊</span>
                         Dashboard
                       </Link>
-                      <Link href="/orders" className="flex items-center px-3 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
+                      <Link href="/orders" className="flex items-center px-3 py-2.5 text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-lg transition-colors">
                         <span className="mr-3">📦</span>
                         Orders
                       </Link>
-                      <Link href="/profile" className="flex items-center px-3 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-colors">
+                      <Link href="/profile" className="flex items-center px-3 py-2.5 text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-lg transition-colors">
                         <span className="mr-3">👤</span>
                         Profile
                       </Link>
-                      <hr className="my-2 border-gray-100" />
+                      <hr className="my-2 border-white/10" />
                       <button
                         onClick={() => signOut()}
-                        className="flex items-center w-full px-3 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                        className="flex items-center w-full px-3 py-2.5 text-sm text-pink-300 hover:bg-pink-500/20 rounded-lg transition-colors"
                       >
                         <span className="mr-3">🚪</span>
                         Sign Out
@@ -233,7 +233,7 @@ export function Navbar() {
                 >
                   <Link
                     href="/auth"
-                    className="inline-flex items-center justify-center px-3 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg sm:rounded-xl transition-all duration-200 shadow-lg shadow-blue-500/25 min-w-[60px] sm:min-w-[80px]"
+                    className="inline-flex items-center justify-center px-3 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-pink-500 via-purple-600 to-violet-600 hover:from-pink-600 hover:via-purple-700 hover:to-violet-700 rounded-lg sm:rounded-xl transition-all duration-200 shadow-lg shadow-pink-500/30 min-w-[60px] sm:min-w-[80px] ring-2 ring-white/20 hover:ring-white/30"
                   >
                     Sign In
                   </Link>
@@ -243,7 +243,7 @@ export function Navbar() {
               {/* Mobile menu button */}
               <motion.button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 sm:p-2.5 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg sm:rounded-xl transition-all duration-200 border border-gray-200 hover:border-gray-300 ml-1"
+                className="lg:hidden p-2 sm:p-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl transition-all duration-200 border border-white/10 hover:border-white/20 backdrop-blur-sm ml-1"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -278,7 +278,7 @@ export function Navbar() {
           <AnimatePresence>
             {searchOpen && (
               <motion.div 
-                className="lg:hidden py-4 border-t border-gray-100"
+                className="lg:hidden py-4 border-t border-white/10"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
@@ -293,7 +293,7 @@ export function Navbar() {
           <AnimatePresence>
             {mobileMenuOpen && (
               <motion.div 
-                className="lg:hidden py-4 border-t border-gray-100"
+                className="lg:hidden py-4 border-t border-white/10"
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
@@ -309,7 +309,7 @@ export function Navbar() {
                     >
                       <Link
                         href={item.href}
-                        className="block px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-xl font-medium transition-all duration-200"
+                        className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-xl font-medium transition-all duration-200 border border-transparent hover:border-white/20"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {item.name}
