@@ -140,11 +140,11 @@ export default function CheckoutPage() {
           </h1>
           
           {/* Progress Steps */}
-          <div className="flex items-center justify-center max-w-md mx-auto">
+          <div className="flex items-center justify-center max-w-md mx-auto overflow-x-auto pb-2">
             {steps.map((step, index) => (
-              <div key={step.id} className="flex items-center">
+              <div key={step.id} className="flex items-center flex-shrink-0">
                 <motion.div 
-                  className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
+                  className={`flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 ${
                     currentStep >= step.id
                       ? 'border-purple-600 bg-purple-600 text-white'
                       : 'border-gray-300 bg-white text-gray-400'
@@ -152,18 +152,18 @@ export default function CheckoutPage() {
                   whileHover={{ scale: 1.05 }}
                 >
                   {currentStep > step.id ? (
-                    <CheckCircleIcon className="h-5 w-5" />
+                    <CheckCircleIcon className="h-4 w-4 sm:h-5 sm:w-5" />
                   ) : (
-                    <step.icon className="h-5 w-5" />
+                    <step.icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   )}
                 </motion.div>
-                <span className={`ml-2 text-sm font-medium ${
+                <span className={`ml-1 sm:ml-2 text-xs sm:text-sm font-medium ${
                   currentStep >= step.id ? 'text-purple-600' : 'text-gray-400'
-                }`}>
+                } hidden sm:inline`}>
                   {step.name}
                 </span>
                 {index < steps.length - 1 && (
-                  <div className={`w-12 h-0.5 mx-4 ${
+                  <div className={`w-6 sm:w-12 h-0.5 mx-2 sm:mx-4 ${
                     currentStep > step.id ? 'bg-purple-600' : 'bg-gray-300'
                   } transition-all duration-300`} />
                 )}
@@ -172,15 +172,15 @@ export default function CheckoutPage() {
           </div>
         </motion.div>
 
-        <div className="lg:grid lg:grid-cols-3 lg:gap-12">
+        <div className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-12 gap-8">
           {/* Checkout Form */}
           <motion.div 
-            className="lg:col-span-2"
+            className="order-2 lg:order-1 lg:col-span-2"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="bg-white rounded-3xl shadow-xl p-8">
+            <div className="bg-white rounded-3xl shadow-xl p-6 lg:p-8">
               <form onSubmit={handleStepSubmit}>
                 <AnimatePresence mode="wait">
                   {currentStep === 1 && (
@@ -213,7 +213,7 @@ export default function CheckoutPage() {
                           />
                         </div>
                         
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
                             <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
                               First Name *
@@ -294,7 +294,7 @@ export default function CheckoutPage() {
                           />
                         </div>
                         
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
                             <label htmlFor="city" className="block text-sm font-semibold text-gray-700 mb-2">
                               City *
@@ -404,7 +404,7 @@ export default function CheckoutPage() {
                           />
                         </div>
                         
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
                             <label htmlFor="expiryDate" className="block text-sm font-semibold text-gray-700 mb-2">
                               Expiry Date *
@@ -482,12 +482,12 @@ export default function CheckoutPage() {
 
           {/* Order Summary */}
           <motion.div 
-            className="lg:col-span-1"
+            className="order-1 lg:order-2 lg:col-span-1"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="bg-white rounded-3xl shadow-xl p-8 sticky top-8">
+            <div className="bg-white rounded-3xl shadow-xl p-6 lg:p-8 lg:sticky lg:top-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Order Summary</h2>
               
               {/* Cart Items */}
