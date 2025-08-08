@@ -333,3 +333,87 @@ html {
     background-position: 100% 50%;
   }
 }
+
+/* Navbar utilities to prevent element collapse */
+.navbar-container {
+  min-height: 4rem; /* 16 * 0.25rem = 4rem = 64px */
+}
+
+@media (min-width: 640px) {
+  .navbar-container {
+    min-height: 4.5rem; /* 18 * 0.25rem = 4.5rem = 72px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar-container {
+    min-height: 5rem; /* 20 * 0.25rem = 5rem = 80px */
+  }
+}
+
+.navbar-item {
+  flex-shrink: 0;
+  min-width: fit-content;
+}
+
+.navbar-logo {
+  flex-shrink: 0;
+  max-width: 200px;
+}
+
+.navbar-search {
+  flex-grow: 1;
+  max-width: 500px;
+  min-width: 200px;
+}
+
+.navbar-actions {
+  flex-shrink: 0;
+  min-width: fit-content;
+}
+
+/* Ensure proper spacing in flex containers */
+.navbar-flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .navbar-flex {
+    gap: 1rem;
+  }
+}
+
+/* Hide scrollbars but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+/* Improved text overflow handling */
+.text-overflow-safe {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Better responsive behavior */
+@media (max-width: 1023px) {
+  .navbar-container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .navbar-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

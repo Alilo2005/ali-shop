@@ -26,6 +26,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion'
 import { useStore } from '@/lib/store'
 import { CartSidebar } from '@/components/cart/cart-sidebar'
+import { SearchBar } from '@/components/search/search-bar'
 import { useTheme } from '@/components/theme-provider'
 
 type NavigationItem = {
@@ -45,6 +46,7 @@ const navigation: NavigationItem[] = [
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [notifications, setNotifications] = useState(3) // Mock notification count
   const { data: session } = useSession()
@@ -52,6 +54,7 @@ export function Navbar() {
   const { theme, toggleTheme } = useTheme()
   const router = useRouter()
   const pathname = usePathname()
+  const searchInputRef = useRef<HTMLInputElement>(null)
   const totalItems = getTotalItems()
 
   // Enhanced scroll detection
@@ -70,14 +73,23 @@ export function Navbar() {
   // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false)
+    setSearchOpen(false)
   }, [pathname])
 
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Cmd/Ctrl + K to focus search
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setSearchOpen(true)
+        setTimeout(() => searchInputRef.current?.focus(), 100)
+      }
+      
       // Escape to close menus
       if (e.key === 'Escape') {
         setMobileMenuOpen(false)
+        setSearchOpen(false)
       }
     }
     
@@ -165,6 +177,23 @@ export function Navbar() {
               </div>
             </div>
 
+            {/* Search Bar - Desktop */}
+            <motion.div 
+              className="navbar-search hidden lg:block lg:flex-1 lg:max-w-md lg:mx-4"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
+            >
+              <div className="relative w-full">
+                <SearchBar ref={searchInputRef} />
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <kbd className="hidden sm:inline-flex items-center px-2 py-1 text-xs font-medium text-white/60 bg-white/10 rounded border border-white/20">
+                    ⌘K
+                  </kbd>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Right side icons */}
             <div className="navbar-actions flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
               {/* Dark Mode Toggle */}
@@ -199,6 +228,17 @@ export function Navbar() {
                     </motion.div>
                   )}
                 </AnimatePresence>
+              </motion.button>
+
+              {/* Search - Mobile */}
+              <motion.button
+                onClick={() => setSearchOpen(!searchOpen)}
+                className="lg:hidden p-2 sm:p-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl transition-all duration-200 border border-white/10 hover:border-white/20 backdrop-blur-sm"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Search products"
+              >
+                <MagnifyingGlassIcon className="h-4 w-4 sm:h-5 sm:w-5" />
               </motion.button>
 
               {/* Notifications - Only for authenticated users */}
@@ -370,6 +410,31 @@ export function Navbar() {
               </motion.button>
             </div>
           </div>
+
+          {/* Mobile Search */}
+          <AnimatePresence>
+            {searchOpen && (
+              <motion.div 
+                className="lg:hidden py-4 border-t border-white/10"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="relative">
+                  <SearchBar ref={searchInputRef} />
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                    <kbd className="inline-flex items-center px-2 py-1 text-xs font-medium text-white/60 bg-white/10 rounded border border-white/20">
+                      ESC
+                    </kbd>
+                  </div>
+                </div>
+                <div className="mt-4 text-xs text-white/60 text-center">
+                  Search for products, categories, or brands
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Mobile Navigation */}
           <AnimatePresence>
