@@ -3,51 +3,76 @@
 import Image from 'next/image'
 import { ArrowRightIcon, PlayIcon, SparklesIcon, FireIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 export function HeroSection() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 overflow-hidden">
-      {/* Animated Background Elements */}
+      {/* Lightweight Background Elements */}
       <div className="absolute inset-0">
-        <motion.div
-          className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-pink-500 to-violet-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute top-40 right-10 w-96 h-96 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-          animate={{
-            x: [0, -120, 0],
-            y: [0, 80, 0],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-          animate={{
-            x: [0, 60, 0],
-            y: [0, -60, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        {!isMobile ? (
+          // Only render heavy animations on desktop
+          <>
+            <motion.div
+              className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-pink-500 to-violet-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+              animate={{
+                x: [0, 100, 0],
+                y: [0, -100, 0],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <motion.div
+              className="absolute top-40 right-10 w-96 h-96 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+              animate={{
+                x: [0, -120, 0],
+                y: [0, 80, 0],
+                scale: [1, 0.8, 1],
+              }}
+              transition={{
+                duration: 25,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+            <motion.div
+              className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
+              animate={{
+                x: [0, 60, 0],
+                y: [0, -60, 0],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 18,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </>
+        ) : (
+          // Static gradients for mobile
+          <>
+            <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-pink-500 to-violet-500 rounded-full mix-blend-multiply filter blur-xl opacity-15" />
+            <div className="absolute top-40 right-10 w-96 h-96 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-15" />
+            <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full mix-blend-multiply filter blur-xl opacity-15" />
+          </>
+        )}
       </div>
 
       {/* Floating Particles */}
@@ -206,22 +231,37 @@ export function HeroSection() {
                 </div>
               </motion.div>
               
-              {/* Floating elements */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              >
-                <FireIcon className="h-8 w-8" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-emerald-400 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                <SparklesIcon className="h-8 w-8" />
-              </motion.div>
+              {/* Floating elements - optimized for performance */}
+              {!isMobile ? (
+                <>
+                  <motion.div
+                    className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                  >
+                    <FireIcon className="h-8 w-8" />
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-emerald-400 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  >
+                    <SparklesIcon className="h-8 w-8" />
+                  </motion.div>
+                </>
+              ) : (
+                // Static elements on mobile
+                <>
+                  <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+                    <FireIcon className="h-8 w-8" />
+                  </div>
+                  
+                  <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-emerald-400 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+                    <SparklesIcon className="h-8 w-8" />
+                  </div>
+                </>
+              )}
             </div>
           </motion.div>
         </div>

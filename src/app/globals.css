@@ -38,13 +38,15 @@ body {
   50% { background-position: 100% 50%; }
 }
 
-/* Utility classes for effects */
+/* Performance-optimized utility classes */
 .float-animation {
   animation: float 3s ease-in-out infinite;
+  will-change: transform;
 }
 
 .pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+  will-change: box-shadow;
 }
 
 .shimmer-effect {
@@ -62,20 +64,25 @@ body {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   transform: translateX(-100%);
   animation: shimmer 2s infinite;
+  will-change: transform;
 }
 
 .gradient-shift {
   background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
+  animation: gradient-shift 6s ease infinite;
+  will-change: background-position;
 }
 
-/* Smooth hover transitions */
+/* Mobile-optimized hover transitions */
 .smooth-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
-.smooth-hover:hover {
-  transform: translateY(-2px) scale(1.02);
+@media (hover: hover) {
+  .smooth-hover:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
 }
 
 /* Glass morphism effect */
@@ -129,7 +136,7 @@ body {
   animation: pulse-glow 2s infinite;
 }
 
-/* Gradient animations */
+/* Gradient animations - optimized for performance */
 @keyframes gradient-shift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -138,7 +145,21 @@ body {
 
 .gradient-animate {
   background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
+  animation: gradient-shift 8s ease infinite;
+  will-change: background-position;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  .gradient-animate {
+    animation-duration: 12s; /* Slower on mobile */
+  }
+  
+  /* Disable some animations on mobile for better performance */
+  .mobile-disable-animation {
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 /* Custom scrollbar for chat */
@@ -178,9 +199,40 @@ body {
   background: linear-gradient(45deg, #7c3aed, #0891b2);
 }
 
-/* Smooth scroll behavior */
+/* Smooth scroll behavior - optimized for mobile */
 html {
   scroll-behavior: smooth;
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  /* Optimize animations for mobile performance */
+  .disable-mobile-animation {
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  /* Reduce animation complexity on mobile */
+  .reduce-mobile-animation {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.3s !important;
+  }
+  
+  /* Optimize transforms for mobile */
+  .mobile-optimize {
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Disable hover effects on mobile */
+  .mobile-no-hover:hover {
+    transform: none !important;
+    scale: none !important;
+  }
 }
 
 /* Selection styles */

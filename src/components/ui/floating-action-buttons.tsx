@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ChatBubbleLeftRightIcon, 
@@ -14,8 +14,16 @@ import { useStore } from '@/lib/store'
 
 export function FloatingActionButtons() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const { toggleCart, getTotalItems } = useStore()
   const totalItems = getTotalItems()
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const buttons = [
     {
@@ -47,11 +55,11 @@ export function FloatingActionButtons() {
           isOpen 
             ? 'from-red-500 to-pink-600' 
             : 'from-purple-600 to-blue-600'
-        } rounded-full shadow-lg flex items-center justify-center text-white`}
+        } rounded-full shadow-lg flex items-center justify-center text-white mobile-optimize`}
         onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.05 }}
+        whileHover={!isMobile ? { scale: 1.05 } : {}}
         whileTap={{ scale: 0.95 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: isMobile ? 0.1 : 0.2 }}
       >
         {isOpen ? (
           <XMarkIcon className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -81,11 +89,11 @@ export function FloatingActionButtons() {
               >
                 {/* Button */}
                 <motion.button
-                  className={`relative w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r ${button.color} rounded-full shadow-md flex items-center justify-center text-white`}
+                  className={`relative w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r ${button.color} rounded-full shadow-md flex items-center justify-center text-white mobile-optimize`}
                   onClick={button.action}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={!isMobile ? { scale: 1.05 } : {}}
                   whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.15 }}
+                  transition={{ duration: isMobile ? 0.1 : 0.15 }}
                 >
                   <button.icon className="h-3 w-3 sm:h-4 sm:w-4" />
                   
