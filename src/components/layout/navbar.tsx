@@ -166,18 +166,26 @@ export function Navbar() {
               {/* Cart */}
               <motion.button
                 onClick={toggleCart}
-                className="relative p-2 sm:p-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl transition-all duration-200 border border-white/10 hover:border-white/20 backdrop-blur-sm"
-                whileHover={{ scale: 1.05 }}
+                className="group relative p-2 sm:p-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl transition-all duration-200 border border-white/10 hover:border-white/20 backdrop-blur-sm"
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
+                animate={totalItems > 0 ? { 
+                  boxShadow: "0 0 20px rgba(147, 51, 234, 0.3)" 
+                } : {}}
               >
-                <ShoppingCartIcon className="h-4 w-4 sm:h-5 sm:w-5" />
+                <motion.div
+                  animate={totalItems > 0 ? { rotate: [0, -10, 10, 0] } : {}}
+                  transition={{ duration: 0.5 }}
+                >
+                  <ShoppingCartIcon className="h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
+                </motion.div>
                 <AnimatePresence>
                   {totalItems > 0 && (
                     <motion.span
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0 }}
-                      className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-bold rounded-full h-5 w-5 sm:h-6 sm:w-6 flex items-center justify-center shadow-lg shadow-pink-500/50 ring-2 ring-white/20"
+                      initial={{ scale: 0, rotate: 180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      exit={{ scale: 0, rotate: -180 }}
+                      className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-bold rounded-full h-5 w-5 sm:h-6 sm:w-6 flex items-center justify-center shadow-lg shadow-pink-500/50 ring-2 ring-white/20 animate-pulse"
                     >
                       {totalItems}
                     </motion.span>

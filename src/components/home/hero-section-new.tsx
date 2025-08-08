@@ -1,6 +1,5 @@
 "use client"
 
-import Image from 'next/image'
 import { ArrowRightIcon, PlayIcon, SparklesIcon, FireIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
 
@@ -163,66 +162,6 @@ export function HeroSection() {
                 <span>Watch Story</span>
               </motion.button>
             </motion.div>
-          </motion.div>
-          
-          {/* Right side - Product showcase */}
-          <motion.div
-            className="hidden lg:block mt-16 lg:mt-0 lg:col-span-6"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <div className="relative">
-              <motion.div
-                className="relative w-full h-96 lg:h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=500&fit=crop"
-                  alt="Premium Products Showcase"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <div className="absolute bottom-6 left-6 text-white">
-                  <motion.h3 
-                    className="text-2xl font-bold"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 }}
-                  >
-                    Premium Collection
-                  </motion.h3>
-                  <motion.p 
-                    className="text-gray-200 mt-2"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.2 }}
-                  >
-                    Curated for excellence
-                  </motion.p>
-                </div>
-              </motion.div>
-              
-              {/* Floating elements */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              >
-                <FireIcon className="h-8 w-8" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-emerald-400 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                <SparklesIcon className="h-8 w-8" />
-              </motion.div>
-            </div>
           </motion.div>
         </div>
       </div>
