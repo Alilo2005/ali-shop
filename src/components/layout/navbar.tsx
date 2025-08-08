@@ -329,8 +329,9 @@ export function Navbar() {
                 >
                   <Link
                     href="/auth"
-                    className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-2.5 text-sm font-medium text-white bg-gradient-to-r from-pink-500 via-purple-600 to-violet-600 hover:from-pink-600 hover:via-purple-700 hover:to-violet-700 rounded-lg sm:rounded-xl transition-all duration-200 shadow-lg shadow-pink-500/30 min-w-[75px] sm:min-w-[85px] whitespace-nowrap ring-2 ring-white/20 hover:ring-white/30"
+                    className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl transition-all duration-200 border border-white/20 hover:border-white/30 shadow-lg hover:shadow-xl"
                   >
+                    <UserIcon className="h-4 w-4 mr-2" />
                     Sign In
                   </Link>
                 </motion.div>
