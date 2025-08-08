@@ -167,7 +167,7 @@ export function HeroSection() {
           
           {/* Right side - Product showcase */}
           <motion.div
-            className="mt-16 lg:mt-0 lg:col-span-6"
+            className="hidden lg:block mt-16 lg:mt-0 lg:col-span-6"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
