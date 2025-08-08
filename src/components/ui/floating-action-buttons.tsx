@@ -40,7 +40,7 @@ export function FloatingActionButtons() {
   ]
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 left-6 z-50">
       {/* Main FAB */}
       <motion.button
         className={`relative w-14 h-14 bg-gradient-to-r ${
@@ -64,7 +64,7 @@ export function FloatingActionButtons() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute bottom-16 right-0 space-y-2"
+            className="absolute bottom-16 left-0 space-y-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -74,16 +74,11 @@ export function FloatingActionButtons() {
               <motion.div
                 key={button.label}
                 className="flex items-center space-x-2"
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
+                exit={{ opacity: 0, x: -20 }}
                 transition={{ delay: index * 0.05, duration: 0.2 }}
               >
-                {/* Label */}
-                <div className="bg-black/70 text-white text-xs px-2 py-1 rounded text-nowrap">
-                  {button.label}
-                </div>
-                
                 {/* Button */}
                 <motion.button
                   className={`relative w-10 h-10 bg-gradient-to-r ${button.color} rounded-full shadow-md flex items-center justify-center text-white`}
@@ -101,6 +96,11 @@ export function FloatingActionButtons() {
                     </span>
                   )}
                 </motion.button>
+                
+                {/* Label */}
+                <div className="bg-black/70 text-white text-xs px-2 py-1 rounded text-nowrap">
+                  {button.label}
+                </div>
               </motion.div>
             ))}
           </motion.div>
