@@ -111,7 +111,10 @@ export function ChatbotMobile() {
         },
         body: JSON.stringify({
           messages: [
-            ...messages.filter(m => m.sender === 'user' || m.sender === 'bot').slice(-5),
+            ...messages.filter(m => m.sender === 'user' || m.sender === 'bot').slice(-5).map(m => ({
+              role: m.sender === 'user' ? 'user' : 'assistant',
+              content: m.content
+            })),
             { role: 'user', content: userMessage }
           ],
           context

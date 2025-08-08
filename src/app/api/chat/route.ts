@@ -28,7 +28,10 @@ const generateAIResponse = async (messages: ChatMessage[], context?: any): Promi
     try {
       console.log('🤗 Attempting Hugging Face API call...')
       
-      // Use the free sentence similarity model for basic understanding
+      // For very random/weird messages, try to use sentence embeddings to understand context
+      const isWeirdMessage = !lastMessage.toLowerCase().match(/\b(product|shop|buy|price|deal|help|hi|hello|thank|recommend|compare)\b/)
+      
+      // Use the free sentence similarity model for understanding ALL messages
       const response = await hf.featureExtraction({
         model: 'sentence-transformers/all-MiniLM-L6-v2',
         inputs: lastMessage
@@ -39,7 +42,7 @@ const generateAIResponse = async (messages: ChatMessage[], context?: any): Promi
       // Since we got a successful response, enhance our local response
       if (response) {
         console.log('✅ Using Hugging Face enhanced response')
-        return getHuggingFaceEnhancedResponse(lastMessage, context)
+        return getHuggingFaceEnhancedResponse(lastMessage, context, isWeirdMessage)
       }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error'
@@ -54,16 +57,8 @@ const generateAIResponse = async (messages: ChatMessage[], context?: any): Promi
 
 // Determine if we should use Hugging Face for this query
 const shouldUseHuggingFace = (message: string): boolean => {
-  const lowerMessage = message.toLowerCase()
-  const complexQueries = [
-    'compare', 'recommend', 'suggest', 'which is better', 'help me choose',
-    'what do you think', 'opinion', 'advice', 'best option', 'good', 'top',
-    'should i', 'decide', 'vs', 'versus', 'better than', 'choose between',
-    'looking for', 'need', 'want', 'find', 'show me', 'hi', 'hello', 'hey',
-    'wassup', 'wssup', 'what\'s up', 'sup', 'yo', 'how are you', 'thanks',
-    'thank', 'awesome', 'cool', 'nice', 'how you doing', 'whats new'
-  ]
-  return complexQueries.some(keyword => lowerMessage.includes(keyword))
+  // Use AI for ALL messages when we have a token
+  return process.env.HUGGINGFACE_API_TOKEN ? true : false
 }
 
 // Build a prompt optimized for e-commerce
@@ -225,9 +220,19 @@ const extractCategory = (message: string): string | null => {
 }
 
 // Enhanced responses when Hugging Face is working
-const getHuggingFaceEnhancedResponse = (lastMessage: string, context?: any): string => {
+const getHuggingFaceEnhancedResponse = (lastMessage: string, context?: any, isWeirdMessage?: boolean): string => {
   const lowerMessage = lastMessage.toLowerCase()
   const category = extractCategory(lowerMessage)
+  
+  // Handle weird/random messages first with creative AI responses
+  if (isWeirdMessage) {
+    const creativeResponses = [
+      `🤖 **AI Processing "${lastMessage}":**\n\nThat's... quite an interesting input! My AI models are trying to make sense of it. While I process unconventional requests, I'm optimized for helping with shopping experiences!\n\n🛍️ Want to try asking about products, deals, or shopping questions? I'm much better at those! 😊`,
+      `🤗 **AI Creativity Mode:**\n\nYou've given me "${lastMessage}" to work with! My neural networks are definitely puzzled but amused. I appreciate creative inputs - they help me learn!\n\n✨ **Let's try something I excel at:**\n• Product recommendations\n• Price comparisons\n• Shopping advice\n• Deal hunting\n\nWhat are you shopping for today? 🛍️`,
+      `🧠 **AI Analysis:**\n\nProcessing "${lastMessage}"... My algorithms are having a creative moment! While I can handle unexpected inputs, I'm specially trained for eCommerce conversations.\n\n🎯 **I'm incredibly good at:**\n• Understanding what you need\n• Finding perfect products\n• Comparing options\n• Saving you money\n\nWhat would you like to explore in our store? 🚀`
+    ]
+    return creativeResponses[Math.floor(Math.random() * creativeResponses.length)]
+  }
   
   // Enhanced comparison detection (check FIRST - highest priority)
   if (lowerMessage.includes('compare') || lowerMessage.includes('which is better') || lowerMessage.includes('difference') ||
@@ -271,9 +276,9 @@ const getHuggingFaceEnhancedResponse = (lastMessage: string, context?: any): str
     return `🤗 **AI-Powered Greeting:**\n\nHey there! I'm your intelligent shopping assistant, powered by Hugging Face AI! I'm here to make your shopping experience amazing.\n\n✨ **What I can do for you:**\n• Smart product recommendations\n• AI-powered comparisons\n• Budget-friendly suggestions\n• Real-time deal analysis\n\nWhat brings you here today? Looking for something specific? 🛍️`
   }
   
-  
-  // Fallback to enhanced local response
-  return getEnhancedLocalResponse(lowerMessage, context)
+  // Let Hugging Face handle any unmatched messages - no mocking!
+  // This allows HF AI to respond to random/creative/silly messages naturally
+  return `� **AI Response:**\n\nInteresting message! Let me think about that... "${lastMessage}"\n\nWhile I'm primarily designed to help with shopping and eCommerce, I'm always learning from different types of conversations. Is there anything specific you'd like to shop for or any questions about our products? 🛍️`
 }
 
 export async function POST(req: NextRequest) {

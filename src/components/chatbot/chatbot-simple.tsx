@@ -51,12 +51,51 @@ export function ChatbotSimple() {
     }
 
     setMessages(prev => [...prev, userMessage])
+    const currentInput = inputValue
     setInputValue('')
     setIsTyping(true)
 
-    // Simulate bot response
-    setTimeout(() => {
-      const lowerInput = inputValue.toLowerCase()
+    try {
+      // Call our AI API
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: [
+            ...messages.slice(-5).map(m => ({
+              role: m.sender === 'user' ? 'user' : 'assistant',
+              content: m.text
+            })),
+            { role: 'user', content: currentInput }
+          ],
+          context: {
+            currentPage: window.location.pathname,
+            userPreferences: {}
+          }
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to get response')
+      }
+
+      const data = await response.json()
+      
+      const botMessage = {
+        id: messages.length + 2,
+        text: data.message,
+        sender: 'bot',
+        timestamp: new Date()
+      }
+
+      setMessages(prev => [...prev, botMessage])
+    } catch (error) {
+      console.error('Chat API error:', error)
+      
+      // Fallback to local response on error
+      const lowerInput = currentInput.toLowerCase()
       let response = botResponses.default
 
       if (lowerInput.includes('product') || lowerInput.includes('browse') || lowerInput.includes('shop')) {
@@ -77,8 +116,9 @@ export function ChatbotSimple() {
       }
 
       setMessages(prev => [...prev, botMessage])
+    } finally {
       setIsTyping(false)
-    }, 1000 + Math.random() * 1000)
+    }
   }
 
   const handleQuickReply = (value: string) => {
