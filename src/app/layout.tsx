@@ -7,12 +7,8 @@ import { Footer } from '@/components/layout/footer'
 import { ChatbotSimple } from '@/components/chatbot/chatbot-simple'
 import { ToastProvider } from '@/components/toast-provider'
 import { FloatingActionButtons } from '@/components/ui/floating-action-buttons'
-import { NotificationSystem } from '@/components/ui/notification-system'
-import { LoadingScreen } from '@/components/ui/loading-screen'
-import { CustomCursor } from '@/components/ui/custom-cursor'
-import { ParticleBackground } from '@/components/ui/particle-background'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
-import { SoundProvider } from '@/components/ui/sound-provider'
+import { AnimatedBackground } from '@/components/ui/animated-background'
 
 const inter = Inter({
   subsets: ["latin"],
@@ -77,10 +73,8 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <LoadingScreen />
-        <CustomCursor />
-        <ParticleBackground />
         <ScrollProgress />
+        <AnimatedBackground />
         <Providers>
           <div className="flex min-h-screen flex-col relative">
             <Navbar />
@@ -90,8 +84,6 @@ export default function RootLayout({
           <ChatbotSimple />
           <ToastProvider />
           <FloatingActionButtons />
-          <NotificationSystem />
-          <SoundProvider />
         </Providers>
       </body>
     </html>
