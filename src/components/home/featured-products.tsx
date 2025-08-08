@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { HeartIcon, ShoppingCartIcon, SparklesIcon, FireIcon } from '@heroicons/react/24/outline'
+import { HeartIcon, ShoppingCartIcon, SparklesIcon, FireIcon, ArchiveBoxIcon } from '@heroicons/react/24/outline'
 import { StarIcon as StarIconSolid, HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid'
 import { formatPrice } from '@/lib/utils'
 import { products } from '@/lib/products'
@@ -115,7 +115,7 @@ export function FeaturedProducts() {
                 {imageErrors.has(product.id) ? (
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
                     <div className="text-center">
-                      <div className="text-2xl sm:text-3xl mb-2">📦</div>
+                      <ArchiveBoxIcon className="h-8 w-8 sm:h-10 sm:w-10 text-gray-400 mx-auto mb-2" />
                       <div className="text-xs sm:text-sm text-gray-500">Product Image</div>
                     </div>
                   </div>

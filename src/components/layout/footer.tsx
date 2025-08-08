@@ -17,6 +17,7 @@ import {
   FaUndoAlt
 } from 'react-icons/fa'
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi'
+import { GiftIcon } from '@heroicons/react/24/outline'
 
 const footerLinks = {
   company: [
@@ -248,8 +249,9 @@ export function Footer() {
                 </form>
                 
                 <div className="mt-6 p-4 bg-gray-800 rounded-lg">
-                  <p className="text-xs text-gray-400">
-                    🎉 Join 50,000+ subscribers and get 10% off your first order!
+                  <p className="text-xs text-gray-400 flex items-center">
+                    <GiftIcon className="h-4 w-4 mr-2 text-purple-400" />
+                    Join 50,000+ subscribers and get 10% off your first order!
                   </p>
                 </div>
               </div>
@@ -288,8 +290,10 @@ export function Footer() {
               <p className="text-sm text-gray-400">
                 &copy; 2024 Ali Shop, Inc. All rights reserved.
               </p>
-              <p className="text-xs text-gray-500 mt-1">
-                Built with ❤️ using Next.js, TypeScript & Tailwind CSS
+              <p className="text-xs text-gray-500 mt-1 flex items-center">
+                Built with 
+                <span className="text-red-400 mx-1">♥</span>
+                using Next.js, TypeScript & Tailwind CSS
               </p>
             </div>
           </div>

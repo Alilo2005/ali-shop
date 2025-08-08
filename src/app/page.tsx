@@ -1,31 +1,42 @@
+'use client'
+
 import Link from 'next/link'
-import { ArrowRightIcon, StarIcon, ShieldCheckIcon, TruckIcon, HeartIcon, SparklesIcon } from '@heroicons/react/24/outline'
-import { HeroSection } from '@/components/home/hero-section'
-import { FeaturedProducts } from '@/components/home/featured-products'
-import CategoryGrid from '@/components/home/category-grid'
-import { TestimonialSection } from '@/components/home/testimonial-section'
+import { ArrowRightIcon, StarIcon, ShieldCheckIcon, TruckIcon, HeartIcon, SparklesIcon, FireIcon, BoltIcon, GiftIcon } from '@heroicons/react/24/outline'
+import { HeroSection } from '@/components/home/hero-section-new'
+import { FeaturedProducts } from '@/components/home/featured-products-enhanced'
+import CategoryGrid from '@/components/home/category-grid-enhanced'
+import { TestimonialSection } from '@/components/home/testimonial-section-enhanced'
 import { NewsletterSection } from '@/components/home/newsletter-section'
+import { motion } from 'framer-motion'
 
 const features = [
   {
-    name: 'Free Shipping',
-    description: 'Free shipping on orders over $50',
-    icon: TruckIcon,
+    name: 'Lightning Fast Delivery',
+    description: 'Free same-day shipping on orders over $50',
+    icon: BoltIcon,
+    gradient: 'from-yellow-400 to-orange-500',
+    bgGradient: 'from-yellow-50 to-orange-50',
   },
   {
-    name: 'Secure Payments',
-    description: 'Your payment information is always safe',
+    name: 'Fort Knox Security',
+    description: 'Bank-level encryption for all transactions',
     icon: ShieldCheckIcon,
+    gradient: 'from-emerald-400 to-teal-500',
+    bgGradient: 'from-emerald-50 to-teal-50',
   },
   {
-    name: 'Quality Guarantee',
-    description: '30-day return policy on all items',
+    name: 'Premium Quality',
+    description: '90-day satisfaction guarantee',
     icon: StarIcon,
+    gradient: 'from-purple-400 to-pink-500',
+    bgGradient: 'from-purple-50 to-pink-50',
   },
   {
-    name: 'Customer Support',
-    description: '24/7 customer service support',
+    name: 'VIP Support',
+    description: 'Dedicated concierge service',
     icon: HeartIcon,
+    gradient: 'from-red-400 to-pink-500',
+    bgGradient: 'from-red-50 to-pink-50',
   },
 ]
 
@@ -35,18 +46,77 @@ export default function Home() {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Features Bar */}
-      <section className="border-t border-gray-200 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      {/* Enhanced Features Bar */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-white via-purple-50/50 to-pink-50/50 border-t border-purple-100/50">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 left-1/4 w-32 h-32 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-full blur-2xl animate-pulse" />
+          <div className="absolute bottom-10 right-1/4 w-40 h-40 bg-gradient-to-r from-blue-400/15 to-cyan-400/15 rounded-full blur-2xl animate-pulse delay-1000" />
+        </div>
+        
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Why Choose 
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"> Ali Shop</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Experience shopping like never before with our premium features and exceptional service
+            </p>
+          </motion.div>
+          
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature) => (
-              <div key={feature.name} className="text-center">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-100">
-                  <feature.icon className="h-6 w-6 text-indigo-600" />
+            {features.map((feature, index) => (
+              <motion.div 
+                key={feature.name} 
+                className="group relative h-full"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className={`relative p-6 h-64 rounded-2xl bg-gradient-to-br ${feature.bgGradient} border border-white/60 shadow-lg group-hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-center items-center text-center`}>
+                  {/* Background gradient overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`} />
+                  
+                  <div className="relative z-10 flex flex-col items-center">
+                    <motion.div 
+                      className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg group-hover:shadow-xl transition-all duration-300 mb-4`}
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <feature.icon className="h-8 w-8 text-white" />
+                    </motion.div>
+                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-gray-800 transition-colors mb-3 leading-tight">
+                      {feature.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 leading-relaxed max-w-[200px]">
+                      {feature.description}
+                    </p>
+                  </div>
+                  
+                  {/* Floating sparkle effect */}
+                  <motion.div
+                    className="absolute top-4 right-4 w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-60"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.6, 1, 0.6],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.2,
+                    }}
+                  />
                 </div>
-                <h3 className="mt-4 text-lg font-medium text-gray-900">{feature.name}</h3>
-                <p className="mt-2 text-sm text-gray-500">{feature.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { HeartIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { HeartIcon, ShoppingCartIcon, ArchiveBoxIcon } from '@heroicons/react/24/outline'
 import { StarIcon as StarIconSolid, HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid'
 import { products } from '@/lib/products'
 import { useStore } from '@/lib/store'
@@ -130,7 +130,7 @@ export function ProductGrid({ category, search, sort }: ProductGridProps) {
               {imageErrors.has(product.id) ? (
                 <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
                   <div className="text-center">
-                    <div className="text-2xl sm:text-3xl mb-1 sm:mb-2">📦</div>
+                    <ArchiveBoxIcon className="h-8 w-8 sm:h-10 sm:w-10 text-gray-400 mx-auto mb-1 sm:mb-2" />
                     <div className="text-xs text-gray-500">Product</div>
                   </div>
                 </div>

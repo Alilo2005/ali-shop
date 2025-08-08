@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useSession, signOut } from 'next-auth/react'
-import { ShoppingCartIcon, HeartIcon, UserIcon, MagnifyingGlassIcon, Bars3Icon, XMarkIcon, ShoppingBagIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline'
+import { ShoppingCartIcon, HeartIcon, UserIcon, MagnifyingGlassIcon, Bars3Icon, XMarkIcon, ShoppingBagIcon, SunIcon, MoonIcon, ChartBarIcon, ArchiveBoxIcon, UserCircleIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useStore } from '@/lib/store'
 import { CartSidebar } from '@/components/cart/cart-sidebar'
@@ -204,15 +204,15 @@ export function Navbar() {
                   >
                     <div className="p-2">
                       <Link href="/dashboard" className="flex items-center px-3 py-2.5 text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-lg transition-colors">
-                        <span className="mr-3">📊</span>
+                        <ChartBarIcon className="h-4 w-4 mr-3" />
                         Dashboard
                       </Link>
                       <Link href="/orders" className="flex items-center px-3 py-2.5 text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-lg transition-colors">
-                        <span className="mr-3">📦</span>
+                        <ArchiveBoxIcon className="h-4 w-4 mr-3" />
                         Orders
                       </Link>
                       <Link href="/profile" className="flex items-center px-3 py-2.5 text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-lg transition-colors">
-                        <span className="mr-3">👤</span>
+                        <UserCircleIcon className="h-4 w-4 mr-3" />
                         Profile
                       </Link>
                       <hr className="my-2 border-white/10" />
@@ -220,7 +220,7 @@ export function Navbar() {
                         onClick={() => signOut()}
                         className="flex items-center w-full px-3 py-2.5 text-sm text-pink-300 hover:bg-pink-500/20 rounded-lg transition-colors"
                       >
-                        <span className="mr-3">🚪</span>
+                        <ArrowRightOnRectangleIcon className="h-4 w-4 mr-3" />
                         Sign Out
                       </button>
                     </div>

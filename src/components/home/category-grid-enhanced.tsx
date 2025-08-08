@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ArrowRightIcon, SparklesIcon } from '@heroicons/react/24/outline'
+import { ArrowRightIcon, SparklesIcon, BoltIcon, SparklesIcon as StarIcon, BeakerIcon, TrophyIcon, HomeIcon, CubeIcon } from '@heroicons/react/24/outline'
 
 const categories = [
   { 
@@ -12,7 +12,7 @@ const categories = [
     description: 'Latest gadgets & tech',
     href: '/categories/electronics',
     image: '/api/placeholder/400/300',
-    icon: '⚡',
+    icon: BoltIcon,
     color: 'from-blue-500 via-purple-500 to-indigo-600',
     accent: 'blue'
   },
@@ -21,7 +21,7 @@ const categories = [
     description: 'Trendy clothing & accessories',
     href: '/categories/fashion',
     image: '/api/placeholder/400/300',
-    icon: '👗',
+    icon: StarIcon,
     color: 'from-pink-500 via-rose-500 to-red-500',
     accent: 'pink'
   },
@@ -30,7 +30,7 @@ const categories = [
     description: 'Skincare & cosmetics',
     href: '/categories/beauty',
     image: '/api/placeholder/400/300',
-    icon: '💄',
+    icon: BeakerIcon,
     color: 'from-purple-500 via-pink-500 to-rose-500',
     accent: 'purple'
   },
@@ -39,7 +39,7 @@ const categories = [
     description: 'Fitness & outdoor gear',
     href: '/categories/sports',
     image: '/api/placeholder/400/300',
-    icon: '🏃',
+    icon: TrophyIcon,
     color: 'from-green-500 via-emerald-500 to-teal-500',
     accent: 'green'
   },
@@ -48,7 +48,7 @@ const categories = [
     description: 'Furniture & decor',
     href: '/categories/home',
     image: '/api/placeholder/400/300',
-    icon: '🏠',
+    icon: HomeIcon,
     color: 'from-orange-500 via-amber-500 to-yellow-500',
     accent: 'orange'
   },
@@ -57,7 +57,7 @@ const categories = [
     description: 'Cookware & appliances',
     href: '/categories/kitchen',
     image: '/api/placeholder/400/300',
-    icon: '🍽️',
+    icon: CubeIcon,
     color: 'from-cyan-500 via-sky-500 to-blue-500',
     accent: 'cyan'
   },
@@ -149,14 +149,14 @@ export default function CategoryGridEnhanced() {
                   {/* Top section with icon and title */}
                   <div className="space-y-4">
                     <motion.div 
-                      className="text-6xl filter drop-shadow-lg"
+                      className="w-16 h-16 mx-auto filter drop-shadow-lg"
                       whileHover={{ 
                         scale: 1.2, 
                         rotate: [0, -5, 5, 0],
                         transition: { duration: 0.4 }
                       }}
                     >
-                      {category.icon}
+                      <category.icon className="w-full h-full text-white" />
                     </motion.div>
                     
                     <div>
