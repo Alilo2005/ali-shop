@@ -44,7 +44,7 @@ export function FeaturedProducts() {
   }
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-16 sm:py-20 bg-white relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 left-1/4 w-40 h-40 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse" />
@@ -55,7 +55,7 @@ export function FeaturedProducts() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Enhanced Header */}
         <motion.div 
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -70,12 +70,12 @@ export function FeaturedProducts() {
             <span className="text-sm font-semibold text-blue-700 tracking-wide">Featured</span>
           </motion.div>
           
-          <h2 className="text-5xl lg:text-6xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent leading-tight mb-6">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent leading-tight mb-4 sm:mb-6">
             Featured Products
           </h2>
           
           <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -87,7 +87,7 @@ export function FeaturedProducts() {
 
         {/* Products Grid */}
         <motion.div 
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -105,25 +105,25 @@ export function FeaturedProducts() {
                 ease: "easeOut"
               }}
               whileHover={{ 
-                y: -8,
+                y: -4,
                 transition: { type: "spring", stiffness: 300, damping: 20 }
               }}
-              className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100"
+              className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
             >
               {/* Product Image */}
-              <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-t-3xl">
+              <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-t-2xl">
                 {imageErrors.has(product.id) ? (
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
                     <div className="text-center">
-                      <div className="text-4xl mb-2">📦</div>
-                      <div className="text-sm text-gray-500">Product Image</div>
+                      <div className="text-2xl sm:text-3xl mb-2">📦</div>
+                      <div className="text-xs sm:text-sm text-gray-500">Product Image</div>
                     </div>
                   </div>
                 ) : (
                   <motion.div 
                     className="w-full h-full"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.4 }}
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.3 }}
                   >
                     <Image
                       src={product.image}
@@ -144,14 +144,14 @@ export function FeaturedProducts() {
                     e.preventDefault()
                     handleWishlistToggle(product, e)
                   }}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-white/90 backdrop-blur-sm shadow-lg hover:bg-white transition-colors duration-200"
+                  className="absolute top-2 sm:top-3 right-2 sm:right-3 p-1.5 sm:p-2 rounded-full bg-white/90 backdrop-blur-sm shadow-md hover:bg-white transition-colors duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
                   {isInWishlist(product.id) ? (
-                    <HeartIconSolid className="h-5 w-5 text-red-500" />
+                    <HeartIconSolid className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
                   ) : (
-                    <HeartIcon className="h-5 w-5 text-gray-600" />
+                    <HeartIcon className="h-3 w-3 sm:h-4 sm:w-4 text-gray-600" />
                   )}
                 </motion.button>
 
@@ -161,27 +161,27 @@ export function FeaturedProducts() {
                     e.preventDefault()
                     handleAddToCart(product, e)
                   }}
-                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center space-x-2 shadow-lg"
+                  className="absolute bottom-2 sm:bottom-3 left-1/2 transform -translate-x-1/2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center space-x-1 sm:space-x-2 shadow-lg"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ y: 20 }}
                   whileInView={{ y: 0 }}
                 >
-                  <ShoppingCartIcon className="h-4 w-4" />
-                  <span className="text-sm">Quick Add</span>
+                  <ShoppingCartIcon className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <span className="text-xs sm:text-sm">Add</span>
                 </motion.button>
               </div>
 
               {/* Product Info */}
-              <div className="p-6">
+              <div className="p-3 sm:p-4">
                 <Link href={`/products/${product.id}`} className="block">
                   {/* Rating */}
-                  <div className="flex items-center mb-3">
+                  <div className="flex items-center mb-2">
                     <div className="flex items-center">
                       {[...Array(5)].map((_, i) => (
                         <StarIconSolid
                           key={i}
-                          className={`h-4 w-4 ${
+                          className={`h-3 w-3 sm:h-4 sm:w-4 ${
                             i < Math.floor(product.rating)
                               ? 'text-yellow-400'
                               : 'text-gray-200'
@@ -189,32 +189,32 @@ export function FeaturedProducts() {
                         />
                       ))}
                     </div>
-                    <span className="ml-2 text-sm text-gray-600">
-                      ({product.rating}) · {product.reviews} reviews
+                    <span className="ml-1 sm:ml-2 text-xs sm:text-sm text-gray-600">
+                      ({product.rating})
                     </span>
                   </div>
 
                   {/* Product name */}
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors duration-200">
+                  <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1 sm:mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors duration-200">
                     {product.name}
                   </h3>
 
                   {/* Price */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <span className="text-2xl font-bold text-gray-900">
+                    <div className="flex items-center space-x-1 sm:space-x-2">
+                      <span className="text-lg sm:text-xl font-bold text-gray-900">
                         {formatPrice(product.price)}
                       </span>
                       {product.originalPrice && (
-                        <span className="text-lg text-gray-500 line-through">
+                        <span className="text-sm sm:text-base text-gray-500 line-through">
                           {formatPrice(product.originalPrice)}
                         </span>
                       )}
                     </div>
                     
                     {product.originalPrice && (
-                      <div className="px-2 py-1 bg-gradient-to-r from-green-600 to-green-800 text-white text-xs font-bold rounded-full">
-                        SAVE {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+                      <div className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-gradient-to-r from-green-600 to-green-800 text-white text-xs font-bold rounded-full">
+                        -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
                       </div>
                     )}
                   </div>
@@ -229,7 +229,7 @@ export function FeaturedProducts() {
 
         {/* View All Products Button */}
         <motion.div 
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -237,7 +237,7 @@ export function FeaturedProducts() {
         >
           <Link href="/products">
             <motion.div
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl text-lg"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl hover:shadow-xl sm:hover:shadow-2xl text-base sm:text-lg"
               whileHover={{ 
                 scale: 1.05,
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
@@ -245,7 +245,7 @@ export function FeaturedProducts() {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <SparklesIcon className="h-6 w-6 mr-3" />
+              <SparklesIcon className="h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3" />
               <span>Discover More Products</span>
             </motion.div>
           </Link>

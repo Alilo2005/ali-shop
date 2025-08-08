@@ -35,26 +35,26 @@ export default function ProductsPage() {
       <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Enhanced Header */}
         <motion.div 
-          className="mb-16 text-center"
+          className="mb-12 sm:mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <motion.div 
-            className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10 border border-blue-200 mb-6 backdrop-blur-sm"
+            className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10 border border-blue-200 mb-4 sm:mb-6 backdrop-blur-sm"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <CubeIcon className="h-5 w-5 text-blue-600 mr-2" />
-            <span className="text-sm font-semibold text-blue-700 tracking-wide">Product Collection</span>
+            <CubeIcon className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 mr-2" />
+            <span className="text-xs sm:text-sm font-semibold text-blue-700 tracking-wide">Product Collection</span>
           </motion.div>
           
-          <h1 className="text-5xl lg:text-6xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent leading-tight mb-4 sm:mb-6">
             Our Products
           </h1>
           
           <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -65,7 +65,7 @@ export default function ProductsPage() {
 
         {/* Enhanced Search */}
         <motion.div 
-          className="mb-12"
+          className="mb-8 sm:mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
@@ -73,7 +73,7 @@ export default function ProductsPage() {
           <ProductSearch />
         </motion.div>
 
-        <div className="lg:grid lg:grid-cols-4 lg:gap-12">
+        <div className="lg:grid lg:grid-cols-5 lg:gap-8 xl:gap-12">
           {/* Enhanced Filters */}
           <motion.div 
             className="lg:col-span-1"
@@ -86,7 +86,7 @@ export default function ProductsPage() {
 
           {/* Enhanced Products Grid */}
           <motion.div 
-            className="lg:col-span-3"
+            className="lg:col-span-4"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}

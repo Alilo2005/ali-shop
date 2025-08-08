@@ -114,28 +114,28 @@ export function ProductGrid({ category, search, sort }: ProductGridProps) {
       </div>
 
       {/* Products grid */}
-      <div className="grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {filteredProducts.map((product, idx) => (
           <motion.div
             key={product.id}
-            className="group relative bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+            className="group relative bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.4, ease: 'easeOut', delay: Math.min(idx * 0.03, 0.2) }}
-            whileHover={{ y: -2 }}
+            whileHover={{ y: -4, scale: 1.02 }}
           >
             {/* Product Image */}
-            <div className="relative aspect-square overflow-hidden rounded-t-lg bg-gray-100">
+            <div className="relative aspect-square overflow-hidden rounded-t-xl bg-gray-100">
               {imageErrors.has(product.id) ? (
                 <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
                   <div className="text-center">
-                    <div className="text-4xl mb-2">PRODUCT</div>
-                    <div className="text-sm text-gray-500">Product Image</div>
+                    <div className="text-2xl sm:text-3xl mb-1 sm:mb-2">📦</div>
+                    <div className="text-xs text-gray-500">Product</div>
                   </div>
                 </div>
               ) : (
-                <motion.div whileHover={{ scale: 1.03 }} className="w-full h-full">
+                <motion.div whileHover={{ scale: 1.05 }} className="w-full h-full">
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -148,7 +148,7 @@ export function ProductGrid({ category, search, sort }: ProductGridProps) {
               
               {/* Sale badge */}
               {product.originalPrice && product.originalPrice > product.price && (
-                <div className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+                <div className="absolute top-1.5 sm:top-2 left-1.5 sm:left-2 bg-red-500 text-white text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full font-medium">
                   Sale
                 </div>
               )}
@@ -156,45 +156,46 @@ export function ProductGrid({ category, search, sort }: ProductGridProps) {
               {/* Wishlist button */}
               <button
                 onClick={() => handleWishlistToggle(product)}
-                className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow duration-200"
+                className="absolute top-1.5 sm:top-2 right-1.5 sm:right-2 p-1.5 sm:p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-sm hover:shadow-md transition-all duration-200 hover:bg-white"
               >
                 {isInWishlist(product.id) ? (
-                  <HeartIconSolid className="h-4 w-4 text-red-500" />
+                  <HeartIconSolid className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
                 ) : (
-                  <HeartIcon className="h-4 w-4 text-gray-600 hover:text-red-500" />
+                  <HeartIcon className="h-3 w-3 sm:h-4 sm:w-4 text-gray-600 hover:text-red-500" />
                 )}
               </button>
 
               {/* Quick add to cart */}
-              <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute bottom-1.5 sm:bottom-2 left-1.5 sm:left-2 right-1.5 sm:right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <button
                   onClick={() => handleAddToCart(product)}
-                  className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-indigo-700 transition-colors duration-200 flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-1.5 sm:py-2 px-2 sm:px-4 rounded-lg text-xs sm:text-sm font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 flex items-center justify-center gap-1 sm:gap-2 shadow-lg"
                 >
-                  <ShoppingCartIcon className="h-4 w-4" />
-                  Add to Cart
+                  <ShoppingCartIcon className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <span className="hidden sm:inline">Add to Cart</span>
+                  <span className="sm:hidden">Add</span>
                 </button>
               </div>
             </div>
 
             {/* Product Info */}
-            <div className="p-4">
-              <div className="mb-2">
+            <div className="p-2 sm:p-3">
+              <div className="mb-1 sm:mb-2">
                 <Link 
                   href={`/products/${product.id}`}
-                  className="text-sm font-medium text-gray-900 hover:text-indigo-600 transition-colors line-clamp-2"
+                  className="text-xs sm:text-sm font-medium text-gray-900 hover:text-purple-600 transition-colors line-clamp-2 leading-tight"
                 >
                   {product.name}
                 </Link>
               </div>
 
               {/* Rating */}
-              <div className="flex items-center gap-1 mb-2">
+              <div className="flex items-center gap-1 mb-1 sm:mb-2">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
                     <StarIconSolid
                       key={i}
-                      className={`h-3 w-3 ${
+                      className={`h-2.5 w-2.5 sm:h-3 sm:w-3 ${
                         i < Math.floor(product.rating)
                           ? 'text-yellow-400'
                           : 'text-gray-200'
@@ -203,24 +204,24 @@ export function ProductGrid({ category, search, sort }: ProductGridProps) {
                   ))}
                 </div>
                 <span className="text-xs text-gray-500">
-                  ({product.reviews})
+                  ({product.rating})
                 </span>
               </div>
 
               {/* Price */}
-              <div className="flex items-center gap-2">
-                <span className="text-lg font-bold text-gray-900">
+              <div className="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+                <span className="text-sm sm:text-base font-bold text-gray-900">
                   {formatPrice(product.price)}
                 </span>
                 {product.originalPrice && product.originalPrice > product.price && (
-                  <span className="text-sm text-gray-500 line-through">
+                  <span className="text-xs sm:text-sm text-gray-500 line-through">
                     {formatPrice(product.originalPrice)}
                   </span>
                 )}
               </div>
 
               {/* Stock status */}
-              <div className="mt-2">
+              <div>
                 {product.inStock ? (
                   <span className="text-xs text-green-600 font-medium">In Stock</span>
                 ) : (

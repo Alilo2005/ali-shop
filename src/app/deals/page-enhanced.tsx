@@ -93,7 +93,7 @@ export default function DealsPage() {
       <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         {/* Enhanced Header */}
         <motion.div 
-          className="mb-16 text-center"
+          className="mb-12 sm:mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -159,7 +159,7 @@ export default function DealsPage() {
 
         {/* Enhanced Products Grid */}
         <motion.div 
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, staggerChildren: 0.1 }}
@@ -178,48 +178,48 @@ export default function DealsPage() {
                   ease: "easeOut"
                 }}
                 whileHover={{ 
-                  y: -8,
+                  y: -4,
                   transition: { type: "spring", stiffness: 300, damping: 20 }
                 }}
-                className="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100"
+                className="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
               >
                 {/* Flash Deal Badge */}
                 {product.isFlashDeal && (
                   <motion.div 
-                    className="absolute top-4 left-4 z-10 flex items-center px-3 py-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold rounded-full"
+                    className="absolute top-2 sm:top-3 left-2 sm:left-3 z-10 flex items-center px-2 sm:px-3 py-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs font-bold rounded-full"
                     animate={{ 
                       scale: [1, 1.1, 1],
                       rotate: [0, -5, 5, 0]
                     }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    <BoltIcon className="h-3 w-3 mr-1" />
+                    <BoltIcon className="h-2.5 w-2.5 sm:h-3 sm:w-3 mr-1" />
                     FLASH
                   </motion.div>
                 )}
 
                 {/* Discount Badge */}
                 <motion.div 
-                  className="absolute top-4 right-4 z-10 px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-bold rounded-full"
+                  className="absolute top-2 sm:top-3 right-2 sm:right-3 z-10 px-2 sm:px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs sm:text-sm font-bold rounded-full"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                 >
                   -{discount}%
                 </motion.div>
 
                 {/* Product Image */}
-                <div className="relative aspect-square overflow-hidden">
+                <div className="relative aspect-square overflow-hidden rounded-t-2xl">
                   {imageErrors.has(product.id) ? (
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
                       <div className="text-center">
-                        <GiftIcon className="h-16 w-16 text-gray-400 mx-auto mb-2" />
-                        <div className="text-sm text-gray-500">Deal Product</div>
+                        <GiftIcon className="h-12 w-12 sm:h-16 sm:w-16 text-gray-400 mx-auto mb-2" />
+                        <div className="text-xs sm:text-sm text-gray-500">Deal Product</div>
                       </div>
                     </div>
                   ) : (
                     <motion.div 
                       className="w-full h-full"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.4 }}
+                      whileHover={{ scale: 1.03 }}
+                      transition={{ duration: 0.3 }}
                     >
                       <Image
                         src={product.image}
@@ -236,20 +236,20 @@ export default function DealsPage() {
                 </div>
 
                 {/* Product Info */}
-                <div className="p-6">
+                <div className="p-3 sm:p-4">
                   <Link href={`/products/${product.id}`} className="block">
                     {/* Countdown Timer */}
-                    <div className="mb-3">
+                    <div className="mb-2">
                       <CountdownTimer endTime={product.dealEndTime} />
                     </div>
 
                     {/* Rating */}
-                    <div className="flex items-center mb-3">
+                    <div className="flex items-center mb-2">
                       <div className="flex items-center">
                         {[...Array(5)].map((_, i) => (
                           <StarIconSolid
                             key={i}
-                            className={`h-4 w-4 ${
+                            className={`h-3 w-3 sm:h-4 sm:w-4 ${
                               i < Math.floor(product.rating)
                                 ? 'text-yellow-400'
                                 : 'text-gray-200'
@@ -257,47 +257,47 @@ export default function DealsPage() {
                           />
                         ))}
                       </div>
-                      <span className="ml-2 text-sm text-gray-600">
-                        ({product.rating}) · {product.reviews} reviews
+                      <span className="ml-1 sm:ml-2 text-xs sm:text-sm text-gray-600">
+                        ({product.rating})
                       </span>
                     </div>
 
                     {/* Product name */}
-                    <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-red-600 transition-colors duration-200">
+                    <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-2 sm:mb-3 line-clamp-2 group-hover:text-red-600 transition-colors duration-200">
                       {product.name}
                     </h3>
 
                     {/* Price */}
-                    <div className="space-y-2">
-                      <div className="flex items-center space-x-3">
-                        <span className="text-2xl font-black text-red-600">
+                    <div className="space-y-1 sm:space-y-2">
+                      <div className="flex items-center space-x-2 sm:space-x-3">
+                        <span className="text-lg sm:text-xl font-black text-red-600">
                           {formatPrice(product.dealPrice)}
                         </span>
-                        <span className="text-lg text-gray-500 line-through">
+                        <span className="text-sm sm:text-base text-gray-500 line-through">
                           {formatPrice(product.originalPrice!)}
                         </span>
                       </div>
                       
-                      <div className="text-sm text-green-600 font-semibold">
-                        You Save: {formatPrice(product.originalPrice! - product.dealPrice)}
+                      <div className="text-xs sm:text-sm text-green-600 font-semibold">
+                        Save: {formatPrice(product.originalPrice! - product.dealPrice)}
                       </div>
                     </div>
 
                     {/* Stock warning */}
                     {product.stockLeft < 10 && (
                       <motion.div 
-                        className="mt-3 text-sm text-orange-600 font-semibold"
+                        className="mt-2 sm:mt-3 text-xs sm:text-sm text-orange-600 font-semibold"
                         animate={{ opacity: [1, 0.7, 1] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
                       >
-                        Only {product.stockLeft} left in stock!
+                        Only {product.stockLeft} left!
                       </motion.div>
                     )}
                   </Link>
                 </div>
 
                 {/* Shine effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-all duration-700 ease-out pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-all duration-500 ease-out pointer-events-none" />
               </motion.div>
             )
           })}
