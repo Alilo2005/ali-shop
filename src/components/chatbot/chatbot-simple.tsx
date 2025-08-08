@@ -139,7 +139,7 @@ export function ChatbotSimple() {
       <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`relative p-3 sm:p-4 rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 active:scale-95 chat-pulse-glow ${
+          className={`relative p-2.5 sm:p-4 rounded-full shadow-lg transition-all duration-500 transform hover:scale-110 active:scale-95 chat-pulse-glow ${
             isOpen 
               ? 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600' 
               : 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 gradient-animate'
@@ -180,7 +180,7 @@ export function ChatbotSimple() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-16 sm:bottom-24 right-4 sm:right-6 z-40 w-[calc(100vw-2rem)] max-w-sm sm:w-96 h-[70vh] sm:h-[500px] max-h-[600px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 flex flex-col overflow-hidden chat-slide-in">
+        <div className="fixed bottom-16 sm:bottom-24 right-2 sm:right-6 left-2 sm:left-auto z-40 w-auto sm:w-96 max-w-sm h-[60vh] sm:h-[500px] max-h-[500px] sm:max-h-[600px] bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 flex flex-col overflow-hidden chat-slide-in">
           {/* Header */}
           <div className="relative p-3 sm:p-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white gradient-animate">
             <div className="flex items-center gap-2 sm:gap-3">
