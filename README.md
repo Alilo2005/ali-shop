@@ -1,6 +1,6 @@
 # 🛒 Ali Shop — Modern eCommerce Platform
 
-### *Your AI-Powered Shopping Experience with Free Hugging Face Intelligence*
+### *Your AI-Powered Shopping Experience with Free Hugging Face Intelligence* 
 
 <div align="center">
 
