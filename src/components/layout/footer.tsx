@@ -43,11 +43,11 @@ const footerLinks = {
     { name: 'Accessibility', href: '/accessibility' },
   ],
   categories: [
-    { name: 'Electronics', href: '/categories/electronics' },
-    { name: 'Fashion', href: '/categories/fashion' },
-    { name: 'Home & Garden', href: '/categories/home-garden' },
-    { name: 'Sports & Outdoors', href: '/categories/sports' },
-    { name: 'Health & Beauty', href: '/categories/health-beauty' },
+    { name: 'Electronics', href: '/products?category=electronics' },
+    { name: 'Fashion', href: '/products?category=fashion' },
+    { name: 'Home & Garden', href: '/products?category=home' },
+    { name: 'Sports & Outdoors', href: '/products?category=sports' },
+    { name: 'Health & Beauty', href: '/products?category=beauty' },
   ],
   social: [
     { name: 'Facebook', href: 'https://facebook.com', icon: FaFacebookF },

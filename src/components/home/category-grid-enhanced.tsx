@@ -10,7 +10,7 @@ const categories = [
   { 
     name: 'Electronics', 
     description: 'Latest gadgets & tech',
-    href: '/categories/electronics',
+    href: '/products?category=electronics',
     image: '/api/placeholder/400/300',
     icon: BoltIcon,
     color: 'from-blue-500 via-purple-500 to-indigo-600',
@@ -19,7 +19,7 @@ const categories = [
   { 
     name: 'Fashion', 
     description: 'Trendy clothing & accessories',
-    href: '/categories/fashion',
+    href: '/products?category=fashion',
     image: '/api/placeholder/400/300',
     icon: StarIcon,
     color: 'from-pink-500 via-rose-500 to-red-500',
@@ -28,7 +28,7 @@ const categories = [
   { 
     name: 'Beauty', 
     description: 'Skincare & cosmetics',
-    href: '/categories/beauty',
+    href: '/products?category=beauty',
     image: '/api/placeholder/400/300',
     icon: BeakerIcon,
     color: 'from-purple-500 via-pink-500 to-rose-500',
@@ -37,7 +37,7 @@ const categories = [
   { 
     name: 'Sports', 
     description: 'Fitness & outdoor gear',
-    href: '/categories/sports',
+    href: '/products?category=sports',
     image: '/api/placeholder/400/300',
     icon: TrophyIcon,
     color: 'from-green-500 via-emerald-500 to-teal-500',
@@ -46,7 +46,7 @@ const categories = [
   { 
     name: 'Home', 
     description: 'Furniture & decor',
-    href: '/categories/home',
+    href: '/products?category=home',
     image: '/api/placeholder/400/300',
     icon: HomeIcon,
     color: 'from-orange-500 via-amber-500 to-yellow-500',
@@ -55,7 +55,7 @@ const categories = [
   { 
     name: 'Kitchen', 
     description: 'Cookware & appliances',
-    href: '/categories/kitchen',
+    href: '/products?category=kitchen',
     image: '/api/placeholder/400/300',
     icon: CubeIcon,
     color: 'from-cyan-500 via-sky-500 to-blue-500',
