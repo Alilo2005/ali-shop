@@ -75,7 +75,7 @@ export function FeaturedProducts() {
           </h2>
           
           <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -108,15 +108,15 @@ export function FeaturedProducts() {
                 y: -8,
                 transition: { type: "spring", stiffness: 300, damping: 20 }
               }}
-              className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100"
+              className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-purple-100"
             >
               {/* Product Image */}
-              <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-t-3xl">
+              <div className="relative aspect-square overflow-hidden bg-purple-50 rounded-t-3xl">
                 {imageErrors.has(product.id) ? (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-50 to-pink-50">
                     <div className="text-center">
                       <div className="text-4xl mb-2">📦</div>
-                      <div className="text-sm text-gray-500">Product Image</div>
+                      <div className="text-sm text-purple-500">Product Image</div>
                     </div>
                   </div>
                 ) : (
@@ -151,7 +151,7 @@ export function FeaturedProducts() {
                   {isInWishlist(product.id) ? (
                     <HeartIconSolid className="h-5 w-5 text-red-500" />
                   ) : (
-                    <HeartIcon className="h-5 w-5 text-gray-600" />
+                    <HeartIcon className="h-5 w-5 text-purple-600" />
                   )}
                 </motion.button>
 
@@ -184,29 +184,29 @@ export function FeaturedProducts() {
                           className={`h-4 w-4 ${
                             i < Math.floor(product.rating)
                               ? 'text-yellow-400'
-                              : 'text-gray-200'
+                              : 'text-purple-200'
                           }`}
                         />
                       ))}
                     </div>
-                    <span className="ml-2 text-sm text-gray-600">
+                    <span className="ml-2 text-sm text-slate-600">
                       ({product.rating}) · {product.reviews} reviews
                     </span>
                   </div>
 
                   {/* Product name */}
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors duration-200">
+                  <h3 className="text-lg font-bold text-slate-800 mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors duration-200">
                     {product.name}
                   </h3>
 
                   {/* Price */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <span className="text-2xl font-bold text-gray-900">
+                      <span className="text-2xl font-bold text-slate-800">
                         {formatPrice(product.price)}
                       </span>
                       {product.originalPrice && (
-                        <span className="text-lg text-gray-500 line-through">
+                        <span className="text-lg text-slate-500 line-through">
                           {formatPrice(product.originalPrice)}
                         </span>
                       )}

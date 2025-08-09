@@ -18,28 +18,28 @@ const features = [
     description: 'Free same-day shipping on orders over $50',
     icon: BoltIcon,
     gradient: 'from-yellow-400 to-orange-500',
-    bgGradient: 'from-yellow-50 to-orange-50',
+    bgGradient: 'from-white to-white',
   },
   {
     name: 'Fort Knox Security',
     description: 'Bank-level encryption for all transactions',
     icon: ShieldCheckIcon,
     gradient: 'from-emerald-400 to-teal-500',
-    bgGradient: 'from-emerald-50 to-teal-50',
+    bgGradient: 'from-white to-white',
   },
   {
     name: 'Premium Quality',
     description: '90-day satisfaction guarantee',
     icon: StarIcon,
     gradient: 'from-purple-400 to-pink-500',
-    bgGradient: 'from-purple-50 to-pink-50',
+    bgGradient: 'from-white to-white',
   },
   {
     name: 'VIP Support',
     description: 'Dedicated concierge service',
     icon: HeartIcon,
     gradient: 'from-red-400 to-pink-500',
-    bgGradient: 'from-red-50 to-pink-50',
+    bgGradient: 'from-white to-white',
   },
 ]
 
@@ -50,7 +50,6 @@ export default function Home() {
   return (
     <div className="min-h-screen relative">
       <PerformanceOptimizer />
-      <AnimatedBackground />
       
       {/* Hero Section */}
       <HeroSection />
@@ -58,7 +57,7 @@ export default function Home() {
       {/* Enhanced Features Bar */}
       <section 
         ref={featuresRef}
-        className="relative overflow-hidden bg-gradient-to-br from-white via-purple-50/50 to-pink-50/50 border-t border-purple-100/50"
+        className="relative overflow-hidden bg-gradient-to-br from-white via-purple-50/30 to-pink-50/30"
       >
         {/* Background decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
@@ -73,11 +72,11 @@ export default function Home() {
             animate={featuresInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-slate-800 mb-4">
               Why Choose 
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent gradient-shift"> Ali Shop</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               Experience shopping like never before with our premium features and exceptional service.
             </p>
           </motion.div>
@@ -99,10 +98,10 @@ export default function Home() {
                     <div className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg mb-4 float-animation pulse-glow`} style={{ animationDelay: `${index * 0.5}s` }}>
                       <feature.icon className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-gray-800 transition-colors mb-3 leading-tight">
+                    <h3 className="text-lg font-bold text-slate-800 group-hover:text-slate-700 transition-colors mb-3 leading-tight">
                       {feature.name}
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed max-w-[200px]">
+                    <p className="text-sm text-slate-600 leading-relaxed max-w-[200px]">
                       {feature.description}
                     </p>
                   </div>
@@ -158,7 +157,7 @@ export default function Home() {
             <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
               <Link
                 href="/products"
-                className="group relative inline-flex items-center justify-center rounded-2xl bg-white px-8 py-4 text-lg font-semibold text-gray-900 shadow-lg smooth-hover focus:outline-none focus:ring-4 focus:ring-white/50 shimmer-effect"
+                className="group relative inline-flex items-center justify-center rounded-2xl bg-white px-8 py-4 text-lg font-semibold text-slate-800 shadow-lg smooth-hover focus:outline-none focus:ring-4 focus:ring-white/50 shimmer-effect"
               >
                 <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
                 Shop Now

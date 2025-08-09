@@ -101,7 +101,7 @@ export function HeroSection() {
             </h1>
             
             <motion.p 
-              className="mt-6 text-xl text-gray-300 leading-relaxed"
+              className="mt-6 text-xl text-blue-100 leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -143,20 +143,6 @@ export function HeroSection() {
         </div>
       </div>
       
-      {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg
-          className="w-full h-auto text-white"
-          viewBox="0 0 1440 54"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0 22L120 16.7C240 11 480 1 720 1C960 1 1200 11 1320 16.7L1440 22V54H1320C1200 54 960 54 720 54C480 54 240 54 120 54H0V22Z"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
     </section>
   )
 }

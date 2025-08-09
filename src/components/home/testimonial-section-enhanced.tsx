@@ -114,7 +114,7 @@ export function TestimonialSection() {
                 {stat.value}
               </motion.div>
               
-              <div className="mt-2 text-sm font-semibold text-gray-600 uppercase tracking-wide">
+              <div className="mt-2 text-sm font-semibold text-slate-600 uppercase tracking-wide">
                 {stat.name}
               </div>
             </motion.div>
@@ -143,7 +143,7 @@ export function TestimonialSection() {
           </h2>
           
           <motion.p 
-            className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -176,7 +176,7 @@ export function TestimonialSection() {
                 y: -8,
                 transition: { type: "spring", stiffness: 300, damping: 20 }
               }}
-              className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100"
+              className="group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-purple-100"
             >
               {/* Quote icon */}
               <motion.div 
@@ -203,7 +203,7 @@ export function TestimonialSection() {
               </div>
 
               {/* Content */}
-              <blockquote className="text-gray-700 text-lg leading-relaxed mb-6 italic">
+              <blockquote className="text-slate-700 text-lg leading-relaxed mb-6 italic">
                 "{testimonial.content}"
               </blockquote>
 
@@ -217,8 +217,8 @@ export function TestimonialSection() {
                   {testimonial.author.avatar}
                 </motion.div>
                 <div className="ml-4">
-                  <div className="font-bold text-gray-900">{testimonial.author.name}</div>
-                  <div className="text-sm text-gray-600">{testimonial.author.role}</div>
+                  <div className="font-bold text-slate-800">{testimonial.author.name}</div>
+                  <div className="text-sm text-slate-600">{testimonial.author.role}</div>
                 </div>
               </div>
 
