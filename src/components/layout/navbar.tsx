@@ -12,8 +12,6 @@ import {
   Bars3Icon, 
   XMarkIcon, 
   ShoppingBagIcon, 
-  SunIcon, 
-  MoonIcon, 
   ChartBarIcon, 
   ArchiveBoxIcon, 
   UserCircleIcon, 
@@ -26,7 +24,6 @@ import {
 import { motion, AnimatePresence } from 'framer-motion'
 import { useStore } from '@/lib/store'
 import { CartSidebar } from '@/components/cart/cart-sidebar'
-import { useTheme } from '@/components/theme-provider'
 
 type NavigationItem = {
   name: string
@@ -49,7 +46,6 @@ export function Navbar() {
   const [notifications, setNotifications] = useState(3) // Mock notification count
   const { data: session } = useSession()
   const { toggleCart, getTotalItems } = useStore()
-  const { theme, toggleTheme } = useTheme()
   const router = useRouter()
   const pathname = usePathname()
   const totalItems = getTotalItems()
@@ -167,40 +163,6 @@ export function Navbar() {
 
             {/* Right side icons */}
             <div className="navbar-actions flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
-              {/* Dark Mode Toggle */}
-              <motion.button
-                onClick={toggleTheme}
-                className="p-2 sm:p-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg sm:rounded-xl transition-all duration-200 border border-white/10 hover:border-white/20 backdrop-blur-sm"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                title={theme === 'dark' ? "Switch to light mode" : "Switch to dark mode"}
-                aria-label={theme === 'dark' ? "Switch to light mode" : "Switch to dark mode"}
-              >
-                <AnimatePresence mode="wait">
-                  {theme === 'dark' ? (
-                    <motion.div
-                      key="sun"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <SunIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="moon"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <MoonIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
-
               {/* Notifications - Only for authenticated users */}
               {session && (
                 <motion.button

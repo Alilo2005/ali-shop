@@ -58,13 +58,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                const theme = localStorage.getItem('ali-shop-theme');
-                const initialTheme = theme || 'light';
+                // Always default to light theme, ignore system preference
+                const theme = localStorage.getItem('ali-shop-theme') || 'light';
                 document.documentElement.classList.remove('light', 'dark');
-                document.documentElement.classList.add(initialTheme);
-                console.log('Initial theme applied:', initialTheme);
+                document.documentElement.classList.add(theme);
+                document.documentElement.style.colorScheme = theme;
+                console.log('Initial theme applied:', theme);
               } catch (e) {
+                document.documentElement.classList.remove('dark');
                 document.documentElement.classList.add('light');
+                document.documentElement.style.colorScheme = 'light';
                 console.log('Theme script error, defaulting to light');
               }
             `,
