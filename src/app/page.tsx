@@ -81,7 +81,7 @@ export default function Home() {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, index) => (
               <motion.div 
                 key={feature.name} 
@@ -90,18 +90,18 @@ export default function Home() {
                 animate={featuresInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className={`relative p-6 h-64 rounded-2xl bg-gradient-to-br ${feature.bgGradient} border border-white/60 shadow-lg smooth-hover overflow-hidden flex flex-col justify-center items-center text-center shimmer-effect`}>
+                <div className={`relative p-4 sm:p-5 md:p-6 h-40 sm:h-52 md:h-64 rounded-xl sm:rounded-2xl bg-gradient-to-br ${feature.bgGradient} border border-white/60 shadow-lg smooth-hover overflow-hidden flex flex-col justify-center items-center text-center shimmer-effect`}>
                   {/* Background gradient overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`} />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-xl sm:rounded-2xl`} />
                   
                   <div className="relative z-10 flex flex-col items-center">
-                    <div className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg mb-4 float-animation pulse-glow`} style={{ animationDelay: `${index * 0.5}s` }}>
-                      <feature.icon className="h-8 w-8 text-white" />
+                    <div className={`flex h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg mb-2 sm:mb-3 md:mb-4 float-animation pulse-glow`} style={{ animationDelay: `${index * 0.5}s` }}>
+                      <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-white" />
                     </div>
-                    <h3 className="text-lg font-bold text-slate-800 group-hover:text-slate-700 transition-colors mb-3 leading-tight">
+                    <h3 className="text-sm sm:text-base md:text-lg font-bold text-slate-800 group-hover:text-slate-700 transition-colors mb-1 sm:mb-2 md:mb-3 leading-tight">
                       {feature.name}
                     </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed max-w-[200px]">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-[180px] sm:max-w-[200px]">
                       {feature.description}
                     </p>
                   </div>

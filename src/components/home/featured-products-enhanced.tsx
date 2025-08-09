@@ -55,27 +55,27 @@ export function FeaturedProducts() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Enhanced Header */}
         <motion.div 
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 md:mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.div 
-            className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-orange-500/10 via-red-500/10 to-pink-500/10 border border-orange-200 mb-6 backdrop-blur-sm"
+            className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-orange-500/10 via-red-500/10 to-pink-500/10 border border-orange-200 mb-4 sm:mb-6 backdrop-blur-sm"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <FireIcon className="h-5 w-5 text-orange-600 mr-2" />
-            <span className="text-sm font-semibold text-orange-700 tracking-wide">Hot Picks</span>
+            <FireIcon className="h-4 w-4 sm:h-5 sm:w-5 text-orange-600 mr-2" />
+            <span className="text-xs sm:text-sm font-semibold text-orange-700 tracking-wide">Hot Picks</span>
           </motion.div>
           
-          <h2 className="text-5xl lg:text-6xl font-black bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent leading-tight mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent leading-tight mb-4 sm:mb-6">
             Featured Products
           </h2>
           
           <motion.p 
-            className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -87,7 +87,7 @@ export function FeaturedProducts() {
 
         {/* Products Grid */}
         <motion.div 
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -108,10 +108,10 @@ export function FeaturedProducts() {
                 y: -8,
                 transition: { type: "spring", stiffness: 300, damping: 20 }
               }}
-              className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-purple-100"
+              className="group relative bg-white rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-purple-100"
             >
               {/* Product Image */}
-              <div className="relative aspect-square overflow-hidden bg-purple-50 rounded-t-3xl">
+              <div className="relative aspect-square overflow-hidden bg-purple-50 rounded-t-2xl sm:rounded-t-3xl">
                 {imageErrors.has(product.id) ? (
                   <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-50 to-pink-50">
                     <div className="text-center">
@@ -144,14 +144,14 @@ export function FeaturedProducts() {
                     e.preventDefault()
                     handleWishlistToggle(product)
                   }}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-white/90 backdrop-blur-sm shadow-lg hover:bg-white transition-colors duration-200"
+                  className="absolute top-2 right-2 sm:top-4 sm:right-4 p-1.5 sm:p-2 rounded-full bg-white/90 backdrop-blur-sm shadow-lg hover:bg-white transition-colors duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
                   {isInWishlist(product.id) ? (
-                    <HeartIconSolid className="h-5 w-5 text-red-500" />
+                    <HeartIconSolid className="h-4 w-4 sm:h-5 sm:w-5 text-red-500" />
                   ) : (
-                    <HeartIcon className="h-5 w-5 text-purple-600" />
+                    <HeartIcon className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
                   )}
                 </motion.button>
 
@@ -161,27 +161,27 @@ export function FeaturedProducts() {
                     e.preventDefault()
                     handleAddToCart(product)
                   }}
-                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center space-x-2 shadow-lg"
+                  className="absolute bottom-2 left-1/2 transform -translate-x-1/2 px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center space-x-1 sm:space-x-2 shadow-lg text-xs sm:text-sm"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ y: 20 }}
                   whileInView={{ y: 0 }}
                 >
-                  <ShoppingCartIcon className="h-4 w-4" />
-                  <span className="text-sm">Quick Add</span>
+                  <ShoppingCartIcon className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <span>Quick Add</span>
                 </motion.button>
               </div>
 
               {/* Product Info */}
-              <div className="p-6">
+              <div className="p-3 sm:p-4 md:p-6">
                 <Link href={`/products/${product.id}`} className="block">
                   {/* Rating */}
-                  <div className="flex items-center mb-3">
+                  <div className="flex items-center mb-2 sm:mb-3">
                     <div className="flex items-center">
                       {[...Array(5)].map((_, i) => (
                         <StarIconSolid
                           key={i}
-                          className={`h-4 w-4 ${
+                          className={`h-3 w-3 sm:h-4 sm:w-4 ${
                             i < Math.floor(product.rating)
                               ? 'text-yellow-400'
                               : 'text-purple-200'
@@ -189,13 +189,13 @@ export function FeaturedProducts() {
                         />
                       ))}
                     </div>
-                    <span className="ml-2 text-sm text-slate-600">
+                    <span className="ml-1 sm:ml-2 text-xs sm:text-sm text-slate-600">
                       ({product.rating}) · {product.reviews} reviews
                     </span>
                   </div>
 
                   {/* Product name */}
-                  <h3 className="text-lg font-bold text-slate-800 mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors duration-200">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-800 mb-1 sm:mb-2 line-clamp-2 group-hover:text-purple-600 transition-colors duration-200">
                     {product.name}
                   </h3>
 

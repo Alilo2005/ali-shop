@@ -82,27 +82,27 @@ export default function CategoryGridEnhanced() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Enhanced Header */}
         <motion.div 
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 md:mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.div 
-            className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-blue-500/10 border border-purple-200 mb-6 backdrop-blur-sm"
+            className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-blue-500/10 border border-purple-200 mb-4 sm:mb-6 backdrop-blur-sm"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <SparklesIcon className="h-5 w-5 text-purple-600 mr-2" />
-            <span className="text-sm font-semibold text-purple-700 tracking-wide">Explore Collections</span>
+            <SparklesIcon className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600 mr-2" />
+            <span className="text-xs sm:text-sm font-semibold text-purple-700 tracking-wide">Explore Collections</span>
           </motion.div>
           
-          <h2 className="text-5xl lg:text-6xl font-black bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-gray-900 via-purple-800 to-gray-900 bg-clip-text text-transparent leading-tight">
             Shop by Category
           </h2>
           
           <motion.p 
-            className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -114,7 +114,7 @@ export default function CategoryGridEnhanced() {
 
         {/* Enhanced Categories Grid */}
         <motion.div 
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -136,7 +136,7 @@ export default function CategoryGridEnhanced() {
                   scale: 1.03,
                   transition: { type: "spring", stiffness: 300, damping: 20 }
                 }}
-                className="relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform-gpu"
+                className="relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform-gpu"
               >
                 {/* Dynamic gradient background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-95 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -145,11 +145,11 @@ export default function CategoryGridEnhanced() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/10 group-hover:from-black/10 transition-all duration-500" />
                 
                 {/* Content container */}
-                <div className="relative p-8 h-80 flex flex-col justify-between">
+                <div className="relative p-4 sm:p-6 md:p-8 h-48 sm:h-64 md:h-80 flex flex-col justify-between">
                   {/* Top section with icon and title */}
-                  <div className="space-y-4">
+                  <div className="space-y-2 sm:space-y-3 md:space-y-4">
                     <motion.div 
-                      className="w-16 h-16 mx-auto filter drop-shadow-lg"
+                      className="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 mx-auto filter drop-shadow-lg"
                       whileHover={{ 
                         scale: 1.2, 
                         rotate: [0, -5, 5, 0],
@@ -160,10 +160,10 @@ export default function CategoryGridEnhanced() {
                     </motion.div>
                     
                     <div>
-                      <h3 className="text-3xl font-bold text-white drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
+                      <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
                         {category.name}
                       </h3>
-                      <p className="text-white/90 text-lg mt-2 font-medium">
+                      <p className="text-white/90 text-sm sm:text-base md:text-lg mt-1 sm:mt-2 font-medium">
                         {category.description}
                       </p>
                     </div>
@@ -171,12 +171,12 @@ export default function CategoryGridEnhanced() {
                   
                   {/* Bottom CTA section */}
                   <motion.div 
-                    className="flex items-center text-white font-semibold text-lg"
+                    className="flex items-center text-white font-semibold text-sm sm:text-base md:text-lg"
                     whileHover={{ x: 8 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <span className="mr-3">Shop Now</span>
-                    <ArrowRightIcon className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
+                    <span className="mr-2 sm:mr-3">Shop Now</span>
+                    <ArrowRightIcon className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform duration-300" />
                   </motion.div>
                   
                   {/* Decorative floating elements */}
